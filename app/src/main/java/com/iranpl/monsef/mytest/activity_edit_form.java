@@ -1,5 +1,6 @@
 package com.iranpl.monsef.mytest;
 
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
@@ -70,5 +71,29 @@ public class activity_edit_form extends AppCompatActivity {
         });
 
 
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        firstName = findViewById(R.id.firName);
+        lastName = findViewById(R.id.lastName);
+        age = findViewById(R.id.age);
+        emailAddr = findViewById(R.id.email);
+
+        if (requestCode == 329) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                String userName = PreferenceManager.getDefaultSharedPreferences(this).getString("firstname", "!!!!")+
+                        " "+ PreferenceManager.getDefaultSharedPreferences(this).getString("lastname", "!!!!") + " " + "ثبت اطلاعات با موفقیت انجام شد";
+                Toast.makeText(this, userName , Toast.LENGTH_SHORT).show();
+                firstName.setText("");
+                lastName.setText("");
+                age.setText("");
+                emailAddr.setText("");
+
+            }
+            else {
+                Toast.makeText(this, "ثبت اطلاعات لغو شد!", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
