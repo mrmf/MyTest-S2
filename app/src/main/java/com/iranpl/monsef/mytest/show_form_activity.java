@@ -21,18 +21,18 @@ public class show_form_activity extends AppCompatActivity {
 
         TextView firstName,lastName, emailAddr, age;
         Intent intent = getIntent();
-        final String fName = "YOUR FIRSTNAME: " + intent.getStringExtra("fname");
-        final String lname = "YOUR LASTNAME: " + intent.getStringExtra("lname");
-        final String num = "YOUR AGE: " + intent.getStringExtra("age");
-        final String email = "YOUR EMAIL: " + intent.getStringExtra("email");
+        final String fName = intent.getStringExtra("fname");
+        final String lname = intent.getStringExtra("lname");
+        final String num = intent.getStringExtra("age");
+        final String email =  intent.getStringExtra("email");
         firstName = findViewById(R.id.firName);
-        firstName.setText(fName);
+        firstName.setText("YOUR FIRSTNAME: " +fName);
         lastName = findViewById(R.id.lastName);
-        lastName.setText(lname);
+        lastName.setText("YOUR LASTNAME: " +lname);
         ageparam = findViewById(R.id.age);
-        ageparam.setText(num);
+        ageparam.setText("YOUR AGE: " +num);
         emailAddr = findViewById(R.id.email);
-        emailAddr.setText(email);
+        emailAddr.setText("YOUR EMAIL: " +email);
 
         btnOk = findViewById(R.id.btnOk);
         btnCancel = findViewById(R.id.btnCancel);
@@ -48,7 +48,6 @@ public class show_form_activity extends AppCompatActivity {
                 setResult(Activity.RESULT_OK, i);
                 finish();
 
-                Toast.makeText(show_form_activity.this, "ثبت اطلاعات با موفقیت انجام شد", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -59,7 +58,6 @@ public class show_form_activity extends AppCompatActivity {
                 setResult(Activity.RESULT_CANCELED, i);
                 finish();
 
-                Toast.makeText(show_form_activity.this, "ثبت اطلاعات لغو شد!", Toast.LENGTH_SHORT).show();
             }
         });
 
